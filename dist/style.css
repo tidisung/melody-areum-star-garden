@@ -108,3 +108,17 @@ body[data-view=board] .admin-child{border:1px solid #eee4f5;background:#fdfbff}b
 .star-track .cute-star{width:45px;height:45px}
 .star-color{display:inline-flex;vertical-align:middle}.star-color .cute-star{width:34px;height:34px}
 @media(max-width:650px){.daily-star .cute-star{width:50px;height:50px}.star-track .cute-star{width:39px;height:39px}.star-color .cute-star{width:31px;height:31px}}
+
+/* Shared yellow/purple theme, with a white star board. */
+body[data-view=board]{background:#ffce19;color:#443b50}
+body[data-view=board] .intro{border-bottom:0}
+body[data-view=board] .intro h1,body[data-view=board] .intro h1 span{color:#fff}
+body[data-view=board] .intro h1 b{color:#7041b0}
+body[data-view=board] .intro p{color:#795b1c}
+body[data-view=board] .wallet{background:#fff;border-color:#fff;box-shadow:0 8px 22px #a57a1414}
+body[data-view=board] .wallet-actions .primary{background:#8548d6;color:white}
+body[data-view=board] .wallet-actions .secondary{background:#f2e8ff;color:#8548d6;border-color:#dfcef3}
+body[data-view=board] nav{background:#8548d6;border:0;border-radius:35% 35% 0 0 / 20px 20px 0 0;box-shadow:0 -4px 20px #73531512}
+body[data-view=board] nav button{color:#d8beff}body[data-view=board] nav button.active{color:#fff}
+body[data-view=board] footer,body[data-view=board] footer small,body[data-view=board] .admin-entry{color:#795b1c}
+body[data-view=board] .admin-heading>span,body[data-view=board] .admin-heading p,body[data-view=board] #adminRule,body[data-view=board] .admin-notice{color:#795b1c}
