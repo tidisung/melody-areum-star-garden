@@ -122,3 +122,15 @@ body[data-view=board] nav{background:#8548d6;border:0;border-radius:35% 35% 0 0 
 body[data-view=board] nav button{color:#d8beff}body[data-view=board] nav button.active{color:#fff}
 body[data-view=board] footer,body[data-view=board] footer small,body[data-view=board] .admin-entry{color:#795b1c}
 body[data-view=board] .admin-heading>span,body[data-view=board] .admin-heading p,body[data-view=board] #adminRule,body[data-view=board] .admin-notice{color:#795b1c}
+
+/* A consistent gold ticket across browsers, instead of the red emoji. */
+.golden-ticket-icon{display:inline-block;width:36px;height:24px;object-fit:contain;vertical-align:middle;flex-shrink:0;filter:none}
+.balances strong>.golden-ticket-icon{width:44px;height:30px;margin-right:3px}
+.wallet-actions .golden-ticket-icon,.primary .golden-ticket-icon{width:30px;height:22px;margin-right:4px}
+.reward-price .golden-ticket-icon{width:40px;height:27px;margin-right:4px}
+.ticket-symbol .golden-ticket-icon{width:33px;height:24px}
+.shop-ticket .ticket-symbol{border-right:1px dashed #d8bc76;padding-right:10px;line-height:1}
+.big-emoji>.golden-ticket-icon{width:155px;height:96px;margin:8px auto}
+.entry-icon .golden-ticket-icon{width:30px;height:23px}
+.admin-totals .golden-ticket-icon{width:29px;height:21px}
+@media(max-width:650px){.balances strong>.golden-ticket-icon{width:37px;height:26px}.reward-price .golden-ticket-icon{width:35px;height:24px}}
