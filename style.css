@@ -34,3 +34,46 @@ body[data-role=admin] .intro,body[data-role=admin] .shop-intro{display:none}
 .admin-heading{padding:30px 0 20px}.admin-heading>span{font-size:12px;letter-spacing:2px;color:#7e5b13}.admin-heading h1{font-size:29px;letter-spacing:-1px;margin:12px 0}.admin-heading p{font-size:14px;color:#6d5423;line-height:1.8}
 .admin-children{display:grid;grid-template-columns:1fr 1fr;gap:16px}.admin-child{background:#fff;border-radius:22px;padding:20px}.admin-child-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.admin-child-top>span{font-size:30px}.admin-child h3{font-size:20px;margin:0}.admin-child a{margin-left:auto;font-size:12px;color:#8548d6;text-decoration:underline}.admin-totals{display:flex;gap:15px;flex-wrap:wrap;margin:22px 0;font-size:14px;color:#6f5c80}.admin-totals b{font-size:24px;color:#8548d6}.admin-child>.primary{width:100%;font-size:14px}.admin-tools{display:flex;gap:12px;margin-top:20px}.admin-tools button{flex:1;background:#fff6d7;color:#5d4322;border-radius:12px;padding:16px 8px;font-size:14px;font-weight:700}#adminRule{font-size:14px;color:#6e5120}.admin-notice{font-size:12px;color:#765a25;line-height:1.8}.admin-detail-title{margin:28px 0 16px;font-size:18px}body[data-role=admin] .profiles{max-width:none}body[data-role=admin] .admin-entry{display:none}
 @media(max-width:500px){.admin-children{grid-template-columns:1fr}.admin-heading h1{font-size:25px}.admin-child{padding:18px}.admin-totals{margin:16px 0}.admin-child-top a{font-size:13px}}
+
+/* White star journal with four daily stars. */
+body[data-view=board]{background:#fff;color:#443b50}
+body[data-view=board] header{padding-top:25px}
+body[data-view=board] .brand{color:#a68ac8}body[data-view=board] .brand>span{color:#544264}body[data-view=board] .brand small{color:#ac9bb7}
+body[data-view=board] .icon-button{color:#9b81b5;background:#f8f4fc;border:1px solid #eee5f5}
+body[data-view=board] .page-label{background:#f6f0fb;color:#9775b0;font-size:12px}
+body[data-view=board] .intro{min-height:240px;padding:26px 0 0;border-bottom:1px solid #f3edf7}
+body[data-view=board] .intro .eyebrow{color:#a893b6;font-size:12px}
+body[data-view=board] .intro h1{color:#564263;font-size:29px;line-height:1.6;letter-spacing:-1px}
+body[data-view=board] .intro h1 span{color:#aa7ac1}body[data-view=board] .intro h1 b{color:#85669e}
+body[data-view=board] .intro p{color:#ac9ab7;font-size:13px}
+body[data-view=board] .garden{transform:scale(.68);bottom:10px;right:0}
+body[data-view=board] .mascot{border-color:#7b658c;border-width:2px;box-shadow:none}.intro .mascot .ear{border-color:#7b658c}
+body[data-view=board] .profiles{background:#f7f2fb}body[data-view=board] .profiles button{color:#ab94ba}body[data-view=board] .profiles button.selected{color:#86629e;background:white;box-shadow:0 2px 8px #785b9510}
+body[data-view=board] .wallet{border:1px solid #efe7f4;background:white;box-shadow:0 12px 45px #8e6aa00a;border-radius:26px;padding:24px}
+body[data-view=board] .wallet>.section-top{background:white;margin:0;padding:0;gap:6px}
+body[data-view=board] .wallet h2{font-size:19px;color:#5c456b}
+body[data-view=board] .badge{background:#f5f0fa;color:#a38ab5;font-size:11px}
+body[data-view=board] .balances{background:#faf7fd;border-radius:18px;margin:22px 0 24px;padding:18px 22px}
+body[data-view=board] .balances strong{font-size:30px;color:#8b66aa}
+body[data-view=board] .balance-label{font-size:13px;color:#aa98b8}
+body[data-view=board] .ticket-balance{border-left:1px solid #e9e0f0}
+.daily-stars{padding:21px 20px;border:1px solid #f0e6f5;border-radius:21px;background:linear-gradient(130deg,#fffaff,#faf8ff)}
+.daily-heading{display:flex;justify-content:space-between;align-items:center;gap:8px}.daily-heading small{font-size:9px;letter-spacing:1.7px;color:#b49cc5}.daily-heading h3{font-size:18px;color:#735287;margin:7px 0 0}.daily-heading>span{font-size:12px;color:#a180b4}
+.today-stars{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0 12px}.daily-star{display:flex;flex-direction:column;align-items:center}.daily-star b{font-size:58px;line-height:1.1;color:#f0e9f6;-webkit-text-stroke:1.5px #dfd1eb;font-weight:400}.daily-star.earned b{color:#ffd970;-webkit-text-stroke:1px #eabb55;filter:drop-shadow(0 3px 0 #f8e5ab)}.daily-star small{font-size:11px;color:#b3a0c2;margin-top:7px}.daily-star.earned small{color:#c49a3b}.daily-stars>p{text-align:center;font-size:12px;line-height:1.7;color:#a28bb1;margin:16px 0 0}
+body[data-view=board] .board-title{padding:25px 0 18px;color:#79608c;font-size:16px}body[data-view=board] .board-title small{font-size:12px;color:#b3a1bf}
+body[data-view=board] .star-track{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+body[data-view=board] .star-track>span{height:82px;background:#fcfaff!important;border:1px dashed #e8ddef;border-radius:17px;justify-content:center}
+body[data-view=board] .star-track b{font-size:44px;line-height:1;color:#f0eaf5;-webkit-text-stroke:1px #ded0e8}
+body[data-view=board] .star-track small{position:static;font-size:11px;color:#baa9c5;line-height:1.5;margin-top:3px}
+body[data-view=board] .star-track .filled{background:#fffaf0!important;border:1px solid #f5e4b7}
+body[data-view=board] .star-track .filled b{color:#ffd369;-webkit-text-stroke:1px #e6b34b;filter:none}
+body[data-view=board] .star-track .filled small{position:static;font-size:10px;color:#c49d48}
+body[data-view=board] .progress-caption{font-size:12px;color:#aa94b8;margin:20px 0}
+body[data-view=board] .wallet-actions .primary{background:#a185b9;border-radius:14px}
+body[data-view=board] .wallet-actions .secondary{background:#f4ecfb;border:1px solid #e6d8ef;color:#9671ad;border-radius:14px}
+body[data-view=board] nav{background:#ffffffed;box-shadow:0 -5px 25px #9776ac0c;border:1px solid #f0e8f5;border-bottom:0;border-radius:24px 24px 0 0}
+body[data-view=board] nav button{color:#c3b4ce}body[data-view=board] nav button.active{color:#9d77b7}
+body[data-view=board] footer,body[data-view=board] footer small,body[data-view=board] .admin-entry{color:#b3a1c0}
+body[data-view=board] .admin-heading>span,body[data-view=board] .admin-heading p,body[data-view=board] #adminRule,body[data-view=board] .admin-notice{color:#a08aad}
+body[data-view=board] .admin-child{border:1px solid #eee4f5;background:#fdfbff}body[data-view=board] .admin-tools button{background:#f6effb;color:#87669b}
+@media(max-width:650px){body[data-view=board] .intro{min-height:295px;padding-top:25px}body[data-view=board] .intro h1{font-size:25px;line-height:1.55}body[data-view=board] .intro p{font-size:12px;max-width:none}body[data-view=board] .garden{transform:scale(.46);bottom:5px}body[data-view=board] .wallet{padding:20px 16px;border-radius:23px}body[data-view=board] .wallet h2{font-size:16px}body[data-view=board] .badge{font-size:9px;padding:5px 7px}body[data-view=board] .balances{padding:16px;margin:19px 0}body[data-view=board] .balances strong{font-size:28px}.daily-stars{padding:18px 12px}.daily-heading h3{font-size:17px}.daily-heading>span{font-size:11px}.today-stars{gap:8px}.daily-star b{font-size:45px}.daily-star small{font-size:10px}.daily-stars>p{font-size:11px}body[data-view=board] .star-track{gap:8px}body[data-view=board] .star-track>span{height:73px;border-radius:14px}body[data-view=board] .star-track b{font-size:36px}body[data-view=board] .board-title{font-size:14px}body[data-view=board] .board-title small{font-size:11px}}
