@@ -199,3 +199,5 @@ body[data-view=history] .history-section{margin-top:12px}
 
 /* Bring the board up to the tabletop illustration after removing its labels. */
 body[data-role=child][data-view=board] .wallet{margin-top:0}
+.shop-rotation-note{display:none}
+body[data-view=shop] .shop-rotation-note{display:block;margin:0 0 16px;font-size:14px;font-weight:700;color:#7041b0}
