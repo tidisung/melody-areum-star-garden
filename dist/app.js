@@ -62,7 +62,7 @@ function cuteStar(){return `<svg class="cute-star" viewBox="0 0 100 100" aria-hi
 function goldenTicket(){return `<img class="golden-ticket-icon" src="assets/golden-ticket.svg" alt="" aria-hidden="true">`}
 
 function renderGiftScene(){
- document.querySelectorAll('[data-gift-to]').forEach(button=>{const target=+button.dataset.giftTo;button.disabled=isAdmin||target===active;button.querySelector('span').textContent=state.children[target].name+(target===active&&!isAdmin?' · 나':'');});
+ document.querySelectorAll('[data-gift-to]').forEach(button=>{const target=+button.dataset.giftTo;button.disabled=isAdmin||target===active;});
  
 }
 let giftTo=null,giftBusy=false;
