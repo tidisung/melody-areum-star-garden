@@ -134,3 +134,12 @@ body[data-view=board] .admin-heading>span,body[data-view=board] .admin-heading p
 .entry-icon .golden-ticket-icon{width:30px;height:23px}
 .admin-totals .golden-ticket-icon{width:29px;height:21px}
 @media(max-width:650px){.balances strong>.golden-ticket-icon{width:37px;height:26px}.reward-price .golden-ticket-icon{width:35px;height:24px}}
+
+/* Personalized animation-style child characters. */
+.character-garden{position:absolute;right:25px;bottom:8px;width:230px;height:270px;display:flex;justify-content:center;align-items:flex-end;pointer-events:none}
+.character-garden>img{display:block;width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.character-spark{position:absolute;color:#fff2ad;font-size:32px}.spark-one{left:-8px;top:80px}.spark-two{right:-12px;top:35px}
+body[data-view=board] .intro{min-height:300px;padding-right:250px}
+.child-avatar{display:inline-block;width:36px;height:42px;object-fit:cover;object-position:center 10%;vertical-align:middle;margin-right:5px;border-radius:50%}
+.admin-avatar{display:block;width:64px;height:78px;object-fit:contain;object-position:center}
+@media(max-width:650px){body[data-view=board] .intro{min-height:350px;padding-right:0}.character-garden{width:150px;height:190px;right:8px;bottom:4px}.character-spark{font-size:25px}.spark-one{left:-10px;top:70px}.spark-two{right:0;top:5px}}
