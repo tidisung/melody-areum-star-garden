@@ -144,23 +144,32 @@ body[data-view=board] .intro{min-height:300px;padding-right:250px}
 .admin-avatar{display:block;width:64px;height:78px;object-fit:contain;object-position:center}
 @media(max-width:650px){body[data-view=board] .intro{min-height:350px;padding-right:0}.character-garden{width:150px;height:190px;right:8px;bottom:4px}.character-spark{font-size:25px}.spark-one{left:-10px;top:70px}.spark-two{right:0;top:5px}}
 
-/* Two friends playing together; the other child is a large touch target. */
-body[data-view=board] .intro{padding:20px 0 0;min-height:0;text-align:center}
-body[data-view=board] .intro h1{font-size:25px;line-height:1.45;margin:0 0 10px}
-body[data-view=board] .intro h1 br{display:none}body[data-view=board] .intro h1 b{display:inline}
-.play-scene{position:relative;width:min(100%,460px);aspect-ratio:3/2;margin:15px auto 0}
-.play-scene>img{display:block;width:100%;height:100%;object-fit:contain}
-.character-target{position:absolute;top:4%;bottom:0;width:41%;padding:0;background:transparent;border-radius:40%;cursor:pointer;color:#735029}
-.target-areum{left:0}.target-melody{right:0}
-.character-target>span{position:absolute;bottom:0;left:50%;transform:translateX(-50%);white-space:nowrap;background:white;border:2px solid #e7c15f;border-radius:20px;padding:7px 15px;font-size:14px;font-weight:800;box-shadow:0 3px 0 #b3872920}
+/* Compact corner scene, aligned with the board's outer edges. */
+body[data-view=board] .intro{position:relative;height:280px;min-height:0;padding:20px 0 0;text-align:left;isolation:isolate}
+body[data-view=board] .intro h1{font-size:26px;line-height:1.5;margin:0 0 10px;max-width:360px}
+body[data-view=board] .intro h1 br{display:block}
+body[data-view=board] .intro h1 b{display:inline}
+body[data-view=board] .intro>p:not(.gift-hint){margin:0;font-size:14px;max-width:300px}
+.play-scene{position:absolute;right:0;bottom:35px;width:260px;height:174px;margin:0}
+.play-scene>img{display:block;width:100%;height:100%;object-fit:contain;object-position:right bottom}
+.character-target{position:absolute;top:5%;bottom:9%;width:43%;padding:0;background:transparent;border-radius:35%;cursor:pointer;color:#735029}
+.target-areum{left:4%}.target-melody{right:4%}
+.character-target>span{position:absolute;bottom:-13px;left:50%;transform:translateX(-50%);white-space:nowrap;background:#fff7dc;border:1px solid #e7c15f;border-radius:20px;padding:4px 10px;font-size:12px;font-weight:800}
 .character-target:not(:disabled)>span{background:#8548d6;border-color:#8548d6;color:white}
 .character-target:disabled{opacity:1;cursor:default}
-.character-target:not(:disabled):hover{background:#ffffff12}
-body[data-view=board] .intro .gift-hint{margin:17px 0 5px;font-size:14px;color:#77511a;font-weight:600}
+.character-target:focus-visible{outline:3px solid #8548d6;outline-offset:2px}
+body[data-view=board] .intro .gift-hint{position:absolute;bottom:0;right:0;margin:0;font-size:12px;color:#77511a;font-weight:600;text-align:right}
 .gift-portraits{display:flex;align-items:center;justify-content:center;gap:18px;margin:12px 0}.gift-portraits img{width:75px;height:105px;object-fit:contain}.gift-portraits span{color:#efba45;font-size:24px}
 #giftDialog h2{text-align:center}#giftBalance{font-size:14px;text-align:center}
 .gift-options{border:0;padding:0;margin:20px 0}.gift-options legend{font-size:14px;color:#7b628e;margin-bottom:10px}#giftOptions{display:flex;gap:10px}.gift-option{flex:1;position:relative;margin:0!important}.gift-option input{position:absolute;opacity:0;width:1px;height:1px}.gift-option>span{display:flex;flex-direction:column;align-items:center;border:2px solid #e8ddef;border-radius:15px;padding:14px 8px;background:#fcf9ff;gap:8px}.gift-option input:checked+span{border-color:#9864ca;background:#f2e8ff}.gift-option input:focus-visible+span{outline:3px solid #9562c5;outline-offset:3px}.gift-option input:disabled+span{opacity:.35}.gift-option .star-body{fill:#ffda75;stroke:#efbf56}.gift-option .star-face{opacity:1}#giftError{color:#a35362;font-size:13px;min-height:20px}#giftDialog .primary{margin-top:0}body:has(#giftDialog[open]){overflow:hidden}
-@media(max-width:650px){body[data-view=board] .intro{padding:20px 0 0;min-height:0}body[data-view=board] .intro h1{font-size:22px}body[data-view=board] .intro h1 br{display:block}.play-scene{width:100%;margin-top:10px}.character-target>span{font-size:12px;padding:6px 11px}body[data-view=board] .intro .gift-hint{font-size:12px;margin-top:14px}.gift-portraits img{width:65px;height:90px}}
+@media(max-width:650px){
+ body[data-view=board] .intro{height:310px;min-height:0;padding:14px 0 0;text-align:left}
+ body[data-view=board] .intro h1{font-size:22px;line-height:1.45;max-width:100%;margin:0 0 8px}
+ body[data-view=board] .intro>p:not(.gift-hint){font-size:12px}
+ .play-scene{width:216px;height:144px;right:0;bottom:32px;margin:0}
+ body[data-view=board] .intro .gift-hint{font-size:12px;margin:0}
+ .gift-portraits img{width:65px;height:90px}
+}
 /* Areum is younger: keep her portrait at 80% of Melody's height. */
 .gift-portraits{align-items:flex-end}
 .gift-portraits img[src*="areum"]{height:84px;width:60px}
