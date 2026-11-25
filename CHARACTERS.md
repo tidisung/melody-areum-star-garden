@@ -10,3 +10,9 @@
 - Asset: `dist/assets/star-play-scene.png`, generated with the built-in image tool using the approved cartoon portraits as references; transparent background.
 - Final edit prompt: Make left Areum (pink sweatshirt, pigtails) approximately 80% of right Melody's full height, align shoes on the same baseline, preserve both identities and animation style, playing together with a smiling golden star. No text or background.
 - The other child's character opens a 1/2/3-star transfer dialog. Transfers debit the sender, credit the recipient and record both sides in the existing browser-local store.
+
+## Compact tabletop scene
+- Asset: `dist/assets/star-table-scene.png`.
+- Mode: built-in image generation, transparent edit using the approved two-child scene.
+- Prompt: Preserve left Areum (pigtails, pink, 80% of Melody) and right Melody (bob, mint dress). Make a cute rounded cartoon vignette with both children behind one low lavender table, hands aligned on its horizontal edge, playing with three little golden stars on its surface. Full table visible, no text or scenery. Intended as a small lower-right header decoration.
+- Header: copy upper-left; illustration lower-right, 216 × 144 CSS pixels on mobile, aligned to the board edge. Character buttons retain the star-transfer dialog.
