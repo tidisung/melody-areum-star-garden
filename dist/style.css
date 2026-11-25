@@ -88,3 +88,7 @@ body[data-view=board] .admin-child{border:1px solid #eee4f5;background:#fdfbff}b
 .shop-ticket:before,.shop-ticket:after{width:12px;height:12px;left:43px;top:-6px}
 .shop-ticket:after{top:auto;bottom:-6px}
 @media(max-width:650px){.shop-ticket{padding:8px 10px;gap:8px;min-height:60px;margin-bottom:8px}.shop-ticket .ticket-symbol{font-size:22px;padding-right:9px}.shop-ticket>div{gap:6px}.shop-ticket small{font-size:12px}.shop-ticket strong{font-size:22px}.shop-ticket button{padding:8px 10px;font-size:12px}.shop-ticket:before,.shop-ticket:after{left:35px}}
+
+/* Start directly with the page content; settings remain in the admin tools. */
+.app>header{display:none}
+.app>main{padding-top:max(12px,env(safe-area-inset-top))}
