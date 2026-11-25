@@ -20,7 +20,7 @@ $('#rewardCards').onclick=e=>{const preview=e.target.closest('[data-preview]');i
 $('#dots').onclick=e=>{const b=e.target.closest('[data-slide]');if(b){const card=$('#rewardCards').children[+b.dataset.slide];$('#rewardCards').scrollTo({left:card.offsetLeft-$('#rewardCards').children[0].offsetLeft,behavior:'smooth'})}};
 $('#rewardCards').onscroll=()=>{const el=$('#rewardCards'),width=el.children[0].getBoundingClientRect().width+16;let index=Math.round(el.scrollLeft/width);document.querySelectorAll('#dots button').forEach((b,i)=>b.classList.toggle('active',i===index))};
 function setView(view){document.body.dataset.view=view;document.querySelectorAll('nav [data-view]').forEach(b=>{b.classList.toggle('active',b.dataset.view===view);b.setAttribute('aria-current',b.dataset.view===view?'page':'false')});window.scrollTo({top:0,behavior:'instant'})}document.querySelectorAll('nav [data-view]').forEach(b=>b.onclick=()=>setView(b.dataset.view));$('#shopGuide').onclick=()=>modal('<h2>선물을 고르기 전에</h2><p>⭐ 별을 모아 골든티켓을 만들어요.<br><img class="golden-ticket-icon" src="assets/golden-ticket.svg" alt="" aria-hidden="true"> 선물마다 필요한 티켓 수가 달라요.<br>🎁 교환을 확정하면 티켓이 차감되고 기록에 남아요.<br>♡ 실제 선물은 보호자가 준비해서 전달해 주세요.</p><button class="primary">알겠어요!</button>',()=>true);setView('board');
-function editRewards(){if(!isAdmin)return;modal(`<h2>우리 가족의 보상 메뉴</h2><p>현재 진열된 선물 5개를 수정해요. 다음 30분 교체 때 새 메뉴로 바뀌어요.</p><div class="edit-row"><span>선물 이름</span><span>티켓</span></div>${state.rewards.map((r,i)=>`<div class="edit-row"><input aria-label="${i+1}번째 보상 이름" id="r${i}" value="${esc(r.name)}" maxlength="25" required><select aria-label="${i+1}번째 보상 티켓 수" id="c${i}">${[1,2,3,4,5].map(v=>`<option value="${v}" ${r.cost===v?'selected':''}>${v}장</option>`).join('')}</select></div>`).join('')}<button class="primary">메뉴 저장하기</button>`,()=>{if(state.rewards.some((r,i)=>!$('#r'+i).value.trim()))return false;const before=JSON.stringify(state);state.rewards.forEach((r,i)=>{r.name=$('#r'+i).value.trim();r.cost=+$('#c'+i).value});if(!save()){state=JSON.parse(before);return false}render();toast('보상 가게를 새롭게 꾸몄어요')})}
+function editRewards(){if(!isAdmin)return;modal(`<h2>우리 가족의 보상 메뉴</h2><p>현재 진열된 선물 5개를 수정해요. 매주 월요일에 새 메뉴로 바뀌어요.</p><div class="edit-row"><span>선물 이름</span><span>티켓</span></div>${state.rewards.map((r,i)=>`<div class="edit-row"><input aria-label="${i+1}번째 보상 이름" id="r${i}" value="${esc(r.name)}" maxlength="25" required><select aria-label="${i+1}번째 보상 티켓 수" id="c${i}">${[1,2,3,4,5].map(v=>`<option value="${v}" ${r.cost===v?'selected':''}>${v}장</option>`).join('')}</select></div>`).join('')}<button class="primary">메뉴 저장하기</button>`,()=>{if(state.rewards.some((r,i)=>!$('#r'+i).value.trim()))return false;const before=JSON.stringify(state);state.rewards.forEach((r,i)=>{r.name=$('#r'+i).value.trim();r.cost=+$('#c'+i).value});if(!save()){state=JSON.parse(before);return false}render();toast('보상 가게를 새롭게 꾸몄어요')})}
 $('#editRewards').onclick=editRewards;
 $('#settings').onclick=()=>isAdmin&&modal(`<h2>보호자 설정</h2><p>우리 가족에게 맞는 별 모으기 규칙을 정해요.</p><label for="threshold">골든티켓 1장에 필요한 별</label><input type="number" id="threshold" min="1" max="100" value="${state.threshold}" required><p class="hint">별 주기와 교환은 보호자와 함께 사용해 주세요. 별도 잠금 기능은 없어요.<br>기록은 이 브라우저에 저장되며 다른 기기와 자동으로 공유되지 않아요. 브라우저 데이터를 삭제하면 기록도 사라져요.</p><button class="primary">설정 저장하기</button>`,()=>{const value=+$('#threshold').value;if(!Number.isInteger(value)||value<1||value>100)return false;const old=state.threshold;state.threshold=value;if(!save()){state.threshold=old;return false}render();toast('별 모으기 규칙을 저장했어요')});render();
 
@@ -95,9 +95,9 @@ $('#giftDialog').addEventListener('cancel',event=>{if(giftBusy)event.preventDefa
 
 function syncCatalog(){
  const slot=shopSlot();
- if(state.catalogVersion===3&&state.catalogSlot===slot)return false;
+ if(state.catalogVersion===4&&state.catalogSlot===slot)return false;
  state.rewards=catalogForSlot(slot,DESSERTS);
- state.catalogSlot=slot;state.catalogVersion=3;
+ state.catalogSlot=slot;state.catalogVersion=4;
  try{localStorage.setItem(KEY,JSON.stringify(state))}catch{}
  return true;
 }
@@ -111,6 +111,6 @@ function refreshShop(){
  $('#rewardCards').scrollLeft=0;
 }
 let renderedShopSlot=shopSlot();
-setInterval(refreshShop,1000);
+setInterval(refreshShop,30000);
 window.addEventListener('focus',refreshShop);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshShop()});
