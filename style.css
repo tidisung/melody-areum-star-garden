@@ -176,3 +176,7 @@ body[data-view=board] .intro .gift-hint{position:absolute;bottom:0;right:0;margi
 .gift-portraits>span{align-self:center}
 .target-areum{top:18%}
 @media(max-width:600px){.gift-portraits img[src*="areum"]{height:72px;width:52px}}
+
+/* The third tab starts directly with the activity log. */
+body[data-view=history] .intro{display:none}
+body[data-view=history] .history-section{margin-top:12px}
