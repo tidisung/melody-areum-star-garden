@@ -8,3 +8,6 @@ node_modules/
 .agents/
 *.log
 *.tar.gz
+.private/
+dist/server/
+dist/.openai/
