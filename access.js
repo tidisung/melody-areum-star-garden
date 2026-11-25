@@ -17,7 +17,7 @@
   if(!isAdmin&&initial.role==='child'&&initial.accountChild!==(Cloud.page==='areum'?1:0))throw Error('이 아이패드에 맞는 아이의 연결 링크로 열어 주세요.');
   if(isAdmin&&initial.role!=='admin')throw Error('관리자 계정으로 연결해 주세요.');
   window.cloudInitialState=initial;if(started)return;started=true;
-  const script=document.createElement('script');script.src='app.js?v=cloud-1';script.onload=()=>{document.documentElement.classList.remove('admin-locked');document.getElementById('adminLogout').onclick=()=>Cloud.logout()};script.onerror=()=>{started=false;error.textContent='화면을 불러오지 못했어요. 새로고침해 주세요.'};document.body.append(script);
+  const script=document.createElement('script');script.src='app.js?v=gift-1';script.onload=()=>{document.documentElement.classList.remove('admin-locked');document.getElementById('adminLogout').onclick=()=>Cloud.logout()};script.onerror=()=>{started=false;error.textContent='화면을 불러오지 못했어요. 새로고침해 주세요.'};document.body.append(script);
  }
  form.onsubmit=async e=>{e.preventDefault();if(!isAdmin)return;const b=form.querySelector('button');b.disabled=true;error.textContent='연결 중…';try{const result=await Cloud.request('/login',{key:adminKey,pin:input.value});Cloud.setToken(result.token);input.value='';await start()}catch(e){error.textContent=e.message}finally{b.disabled=false}};
  try{if(pair){error.textContent='아이패드를 연결하고 있어요…';const r=await Cloud.request('/pair',{code:pair});if((r.child===1?'areum':'melody')!==Cloud.page){localStorage.setItem('star-garden-session-'+(r.child===1?'areum':'melody'),r.token);location.replace('?page='+(r.child===1?'areum':'melody'));return}Cloud.setToken(r.token)}if(Cloud.connected)await start();else if(isAdmin)input.focus()}catch(e){error.textContent=e.message}
