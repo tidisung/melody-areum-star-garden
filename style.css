@@ -95,3 +95,16 @@ body[data-view=board] .admin-child{border:1px solid #eee4f5;background:#fdfbff}b
 /* Match the balance strip to the centered reward card's actual width. */
 .shop .shop-ticket{width:calc(56% + 64px);max-width:100%;margin-left:auto;margin-right:auto}
 @media(max-width:650px){.shop .shop-ticket{width:calc(76% + 44px);padding:8px;gap:6px}.shop-ticket .ticket-symbol{display:none}.shop-ticket:before,.shop-ticket:after{display:none}.shop-ticket>div{gap:6px}.shop-ticket small{font-size:12px}.shop-ticket strong{font-size:21px}.shop-ticket button{padding:8px;min-width:54px}}
+
+/* Soft, rounded star stickers with a tiny happy face. */
+.cute-star{display:block;width:48px;height:48px;overflow:visible;flex-shrink:0;filter:none}
+.cute-star .star-body{fill:#f3edf8;stroke:#e4d7ed;stroke-width:2.5;stroke-linejoin:round}
+.cute-star .star-shine{fill:none;stroke:#fff;stroke-width:5;stroke-linecap:round;opacity:.7}
+.cute-star .star-face{opacity:0}
+.earned .cute-star .star-body,.filled .cute-star .star-body,.star-color .cute-star .star-body{fill:#ffda75;stroke:#efbf56}
+.earned .cute-star .star-face,.filled .cute-star .star-face,.star-color .cute-star .star-face{opacity:1}
+.cute-star .star-blush{fill:#f2a59a;opacity:.65}.cute-star .star-eye{fill:#856036}.cute-star .star-smile{fill:none;stroke:#856036;stroke-width:2.5;stroke-linecap:round}
+.daily-star .cute-star{width:65px;height:65px}.daily-star.earned .cute-star{filter:drop-shadow(0 3px 0 #f5e3b7)}
+.star-track .cute-star{width:45px;height:45px}
+.star-color{display:inline-flex;vertical-align:middle}.star-color .cute-star{width:34px;height:34px}
+@media(max-width:650px){.daily-star .cute-star{width:50px;height:50px}.star-track .cute-star{width:39px;height:39px}.star-color .cute-star{width:31px;height:31px}}
