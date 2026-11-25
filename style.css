@@ -220,3 +220,35 @@ body[data-view=shop][data-shop=direct] .shop-back{display:block}
 #rouletteDialog{max-width:620px;width:100%;height:100dvh;max-height:100dvh;margin:0 auto;padding:65px 25px 30px;border-radius:0;background:#ffce19}#rouletteDialog::backdrop{background:#ffce19}#rouletteDialog .close{top:18px;right:18px}#rouletteDialog[data-stage=wheel] h2{font-size:25px;text-align:center;margin:10px 0 20px}#rouletteDialog .roulette-lead{text-align:center}#rouletteDialog .roulette-balance{background:white;border-radius:0;box-shadow:0 6px 12px #80631c26}.prize-list-button{display:block;margin:0 0 24px auto;background:#8548d6;color:white;padding:13px 18px;font-weight:700;font-size:14px}#rouletteDialog[data-stage=wheel] #wishPrizeList,#rouletteDialog[data-stage=wheel] #backToWheel{display:none}#rouletteDialog[data-stage=prizes]{background:#f7f7f7}#rouletteDialog[data-stage=prizes] .wheel-wrap,#rouletteDialog[data-stage=prizes] #spinRoulette,#rouletteDialog[data-stage=prizes] #rouletteStatus,#rouletteDialog[data-stage=prizes] #wishResult,#rouletteDialog[data-stage=prizes] #showWishPrizes{display:none}#backToWheel{display:block;width:100%;position:sticky;bottom:0;background:#ffce19;color:#503758;margin:20px 0 0}#rouletteDialog .wish-prize-row{background:white;margin:0 -25px;padding:22px 25px}#rouletteDialog .wheel-wrap{margin-top:45px;margin-bottom:35px}#rouletteDialog .odds-note{color:#6b4b36}
 @media(max-width:650px){.shop-choice{min-height:235px;padding:26px 20px}.choice-copy>b{font-size:21px;margin-bottom:18px}.choice-copy>span{font-size:15px}.choice-copy{width:53%}.vending-art{width:170px;height:240px;right:-5px;top:27px}.vending-shelves{padding:9px 5px;gap:7px 4px}.vending-shelves>span{height:70px}.vending-shelves img{height:48px}.menu-wheel{width:185px;height:185px;right:-8px;top:44px;border-width:10px}.mini-start{width:60px;height:60px;font-size:14px}.mini-number{font-size:28px}.n2,.n5{top:45px}.n3{right:29px}.n4{left:29px}.n1{top:3px}.vending-art i{font-size:15px;left:-18px;bottom:20px}body[data-view=shop][data-shop=home] .shop-menu{padding-top:38px}}
 @media(max-width:360px){.shop-choice{padding-left:15px}.choice-copy>b{font-size:19px}.choice-copy>span{font-size:14px}.vending-art{right:-24px}.menu-wheel{right:-25px}}
+/* Both reward screens share the direct-selection screen's visual language. */
+body[data-view=shop] .reward-intro,#rouletteDialog .reward-intro{position:relative;text-align:center;background:#f7f7f7;padding:35px 0 10px}
+body[data-view=shop] .reward-intro h1,#rouletteDialog .reward-intro h2{color:#39313e;font-size:30px;line-height:1.45;letter-spacing:-1.6px;font-weight:900;margin:15px 0}
+.reward-intro em{font-style:normal;color:#8548d6}
+body[data-view=shop] .reward-intro p,#rouletteDialog .reward-intro p{font-size:17px;line-height:1.7;color:#615966;margin:16px 0}
+#rouletteDialog{max-width:1000px;width:100%;padding:62px 40px 30px;background:#f7f7f7}
+#rouletteDialog[data-stage=prizes]{background:#f7f7f7}
+#rouletteDialog::backdrop{background:#f7f7f7}
+#rouletteDialog #closeRoulette{position:absolute;left:28px;right:auto;top:20px;width:44px;height:44px;border-radius:0;font-size:42px;line-height:1;background:transparent;color:#999;font-weight:400}
+#rouletteDialog .roulette-stage{background:#ffce19;border-radius:28px 28px 0 0;padding:28px 32px 30px;overflow:hidden}
+#rouletteDialog .roulette-balance{display:flex;align-items:center;justify-content:center;gap:10px;width:calc(56% + 64px);max-width:100%;margin:0 auto 12px;min-height:64px;padding:10px 14px;background:white;border-radius:0;box-shadow:0 4px 10px #92700e20;font-size:13px;color:#615966}
+#rouletteDialog .roulette-balance b{font-size:24px;color:#8548d6;white-space:nowrap}
+.roulette-fee{background:#8548d6;color:white;padding:10px;border-radius:8px;white-space:nowrap;margin-left:auto;font-weight:700}
+#rouletteDialog .wish-prize-row{margin:0;padding:22px 20px;background:white;border-bottom:1px dashed #e5d7ee}
+#rouletteDialog #wishPrizeList{border-radius:20px;overflow:hidden;margin-top:24px;box-shadow:0 5px 15px #92700e18}
+#rouletteDialog #backToWheel{background:#8548d6;color:white;border-radius:13px;padding:15px;position:static}
+#rouletteDialog .prize-list-button{border-radius:8px;margin:16px auto 24px;min-height:44px}
+@media(max-width:650px){
+ body[data-view=shop] .reward-intro,#rouletteDialog .reward-intro{padding:18px 0 0}
+ body[data-view=shop] .reward-intro h1,#rouletteDialog .reward-intro h2{font-size:25px;letter-spacing:-1.4px;margin:15px 0}
+ body[data-view=shop] .reward-intro p,#rouletteDialog .reward-intro p{font-size:15px;margin:16px 0}
+ #rouletteDialog{padding:62px 18px 24px}
+ #rouletteDialog #closeRoulette{left:6px}
+ #rouletteDialog .doodle{font-size:26px}
+ #rouletteDialog .roulette-stage{padding:28px 22px 24px}
+ #rouletteDialog .roulette-balance{width:calc(76% + 44px);gap:6px;padding:8px;min-height:60px;font-size:12px}
+ #rouletteDialog .roulette-balance>.golden-ticket-icon{display:none}
+ #rouletteDialog .roulette-balance b{font-size:21px}
+ .roulette-fee{font-size:12px;padding:8px}
+ #rouletteDialog .wish-prize-row{padding:20px 14px}
+}
+#rouletteDialog .wheel-wrap{width:min(280px,100%);height:auto;aspect-ratio:1}
