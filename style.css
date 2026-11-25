@@ -92,3 +92,6 @@ body[data-view=board] .admin-child{border:1px solid #eee4f5;background:#fdfbff}b
 /* Start directly with the page content; settings remain in the admin tools. */
 .app>header{display:none}
 .app>main{padding-top:max(12px,env(safe-area-inset-top))}
+/* Match the balance strip to the centered reward card's actual width. */
+.shop .shop-ticket{width:calc(56% + 64px);max-width:100%;margin-left:auto;margin-right:auto}
+@media(max-width:650px){.shop .shop-ticket{width:calc(76% + 44px);padding:8px;gap:6px}.shop-ticket .ticket-symbol{display:none}.shop-ticket:before,.shop-ticket:after{display:none}.shop-ticket>div{gap:6px}.shop-ticket small{font-size:12px}.shop-ticket strong{font-size:21px}.shop-ticket button{padding:8px;min-width:54px}}
