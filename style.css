@@ -252,3 +252,23 @@ body[data-view=shop] .reward-intro p,#rouletteDialog .reward-intro p{font-size:1
  #rouletteDialog .wish-prize-row{padding:20px 14px}
 }
 #rouletteDialog .wheel-wrap{width:min(280px,100%);height:auto;aspect-ratio:1}
+/* Wish prizes use the same swipeable ticket cards as the direct-selection shop. */
+#rouletteDialog[data-stage=prizes] #wishPrizeList{display:flex;position:relative;gap:24px;margin:12px -32px 0;padding:20px 22% 18px;scroll-padding-inline:22%;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;align-items:stretch;border-radius:0;box-shadow:none;background:transparent;scrollbar-width:none}
+#rouletteDialog #wishPrizeList::-webkit-scrollbar{display:none}
+#rouletteDialog .wish-prize-card{flex:0 0 100%;min-width:0;scroll-snap-align:center;scroll-snap-stop:always;display:flex;flex-direction:column;text-align:center;background:white;box-shadow:0 9px 13px #85691633}
+#rouletteDialog .wish-prize-card .reward-heading{min-height:150px;height:auto;padding:28px 25px 22px}
+#rouletteDialog .wish-prize-card h3{font-size:23px;line-height:1.45;word-break:keep-all;margin:16px 0 0;color:#35233d}
+#rouletteDialog .wish-card-art{display:grid;place-items:center;min-height:155px;font-size:85px;padding:20px}
+#rouletteDialog .wish-card-description{margin:0;padding:0 24px 28px;font-size:15px;line-height:1.85;color:#615966;min-height:150px;word-break:keep-all;flex:1}
+#rouletteDialog .wish-card-chance{padding:19px 12px;background:#8548d6;color:white;font-size:16px}
+#rouletteDialog .wish-card-chance strong{font-size:23px;margin-left:6px}
+#rouletteDialog[data-stage=wheel] #wishPrizeDots{display:none}
+#rouletteDialog #wishPrizeDots{margin:10px 0 20px}
+#rouletteDialog #wishPrizeDots button{min-width:12px;min-height:12px}
+@media(max-width:650px){
+ #rouletteDialog[data-stage=prizes] #wishPrizeList{gap:22px;margin-left:-22px;margin-right:-22px;padding:16px 12% 18px;scroll-padding-inline:12%}
+ #rouletteDialog .wish-prize-card .reward-heading{min-height:135px;padding:22px 25px 18px}
+ #rouletteDialog .wish-prize-card h3{font-size:20px}
+ #rouletteDialog .wish-card-art{min-height:135px;font-size:75px}
+ #rouletteDialog .wish-card-description{font-size:14px;min-height:155px;padding:0 18px 24px}
+}

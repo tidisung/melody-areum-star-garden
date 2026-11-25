@@ -122,7 +122,8 @@ window.renderWishCards=()=>{
  $('#rouletteTickets').textContent=child().tickets;
 };
 window.renderWishCards();
-$('#wishPrizeList').innerHTML=WISH_PRIZES.map(p=>`<article class="wish-prize-row"><span class="wish-number">${p.rank}</span><span class="wish-icon" aria-hidden="true">${p.icon}</span><div><h3>${p.name}</h3><p>${p.text}</p><strong>당첨 확률 ${p.chance}%</strong></div></article>`).join('');
+$('#wishPrizeList').innerHTML=WISH_PRIZES.map(p=>`<article class="reward wish-prize-card" aria-label="${p.rank}등 ${p.name}, 당첨 확률 ${p.chance}%"><div class="reward-heading"><span class="reward-number">${p.rank}</span><span class="reward-kind">${p.rank}등 소원카드</span><h3>${p.name}</h3></div><div class="wish-card-art" aria-hidden="true">${p.icon}</div><p class="wish-card-description">${p.text}</p><div class="wish-card-chance">당첨 확률 <strong>${p.chance}%</strong></div></article>`).join('');
+$('#wishPrizeDots').innerHTML=WISH_PRIZES.map((p,i)=>`<button type="button" data-wish-slide="${i}" class="${i===0?'active':''}" aria-label="${p.rank}등 ${p.name} 보기" aria-current="${i===0?'true':'false'}"></button>`).join('');
 let angle=0;$('#wishWheel').innerHTML=WISH_PRIZES.map(p=>{const center=angle+p.chance*3.6/2;angle+=p.chance*3.6;return `<span style="transform:translate(-50%,-50%) rotate(${center}deg) translateY(-105px) rotate(-${center}deg)">${p.rank}</span>`}).join('');
 $('#openRoulette').onclick=()=>{
  $('#rouletteDialog').dataset.stage='wheel';
@@ -172,8 +173,15 @@ document.addEventListener('submit',async event=>{
 function showShopMenu(){document.body.dataset.shop='home';window.scrollTo({top:0,behavior:'instant'});$('#openDirectShop').focus()}
 $('#openDirectShop').onclick=()=>{document.body.dataset.shop='direct';window.scrollTo({top:0,behavior:'instant'});$('#shopBack').focus()};
 $('#shopBack').onclick=showShopMenu;
-$('#showWishPrizes').onclick=()=>{ $('#rouletteDialog').dataset.stage='prizes';$('#rouletteDialog').scrollTop=0;$('#backToWheel').focus(); };
+$('#showWishPrizes').onclick=()=>{ $('#rouletteDialog').dataset.stage='prizes';$('#rouletteDialog').scrollTop=0;$('#wishPrizeList').scrollLeft=0;$('#wishPrizeList').focus({preventScroll:true});updateWishDots(); };
 $('#backToWheel').onclick=()=>{ $('#rouletteDialog').dataset.stage='wheel';$('#rouletteDialog').scrollTop=0;$('#showWishPrizes').focus(); };
 function renderVending(){ $('#vendingProducts').innerHTML=state.rewards.map(r=>`<span><img src="${esc(r.image)}" alt=""><small>▱ × ${r.cost}</small></span>`).join(''); }
 renderVending();
 const previousWishRender=window.renderWishCards;window.renderWishCards=()=>{previousWishRender();renderVending()};
+
+function wishSlideIndex(){const list=$('#wishPrizeList'),cards=[...list.children];return cards.reduce((best,card,i)=>Math.abs(card.offsetLeft-cards[0].offsetLeft-list.scrollLeft)<Math.abs(cards[best].offsetLeft-cards[0].offsetLeft-list.scrollLeft)?i:best,0)}
+function updateWishDots(){const selected=wishSlideIndex();document.querySelectorAll('[data-wish-slide]').forEach((b,i)=>{b.classList.toggle('active',i===selected);b.setAttribute('aria-current',i===selected?'true':'false')})}
+function goToWishSlide(index){const list=$('#wishPrizeList'),cards=list.children;index=Math.max(0,Math.min(cards.length-1,index));list.scrollTo({left:cards[index].offsetLeft-cards[0].offsetLeft,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'})}
+$('#wishPrizeList').addEventListener('scroll',updateWishDots,{passive:true});
+$('#wishPrizeDots').onclick=e=>{const b=e.target.closest('[data-wish-slide]');if(b)goToWishSlide(+b.dataset.wishSlide)};
+$('#wishPrizeList').addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();goToWishSlide(wishSlideIndex()+(e.key==='ArrowRight'?1:-1))}});
