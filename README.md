@@ -2,6 +2,24 @@
 
 두 아이에게 칭찬의 별을 선물하고, 모은 별을 골든티켓으로 바꾸는 모바일 웹앱입니다.
 
+## 공개 웹앱
+
+https://tidisung.github.io/melody-areum-star-garden/
+
+- [멜로디](https://tidisung.github.io/melody-areum-star-garden/?page=melody)
+- [아름이](https://tidisung.github.io/melody-areum-star-garden/?page=areum)
+- [관리자](https://tidisung.github.io/melody-areum-star-garden/?page=admin)
+
+GitHub Pages는 `gh-pages` 브랜치의 정적 파일을 제공합니다. `main`을 수정한 후 반영하려면 다음을 실행합니다.
+
+```sh
+git subtree split --prefix=dist -b pages-update
+git push github pages-update:gh-pages
+git branch -D pages-update
+```
+
+사이트 주소가 바뀌면 브라우저 저장 공간도 달라져 기존 Sites 주소의 기록은 자동으로 옮겨지지 않습니다.
+
 ## 실행
 
 별도 설치나 빌드 없이 정적 파일을 제공합니다.
