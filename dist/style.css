@@ -145,12 +145,12 @@ body[data-view=board] .intro{min-height:300px;padding-right:250px}
 @media(max-width:650px){body[data-view=board] .intro{min-height:350px;padding-right:0}.character-garden{width:150px;height:190px;right:8px;bottom:4px}.character-spark{font-size:25px}.spark-one{left:-10px;top:70px}.spark-two{right:0;top:5px}}
 
 /* Compact corner scene, aligned with the board's outer edges. */
-body[data-view=board] .intro{position:relative;height:280px;min-height:0;padding:20px 0 0;text-align:left;isolation:isolate}
+body[data-view=board] .intro{position:relative;height:245px;min-height:0;padding:20px 0 0;text-align:left;isolation:isolate}
 body[data-view=board] .intro h1{font-size:26px;line-height:1.5;margin:0 0 10px;max-width:360px}
 body[data-view=board] .intro h1 br{display:block}
 body[data-view=board] .intro h1 b{display:inline}
 body[data-view=board] .intro>p:not(.gift-hint){margin:0;font-size:14px;max-width:300px}
-.play-scene{position:absolute;right:0;bottom:35px;width:260px;height:174px;margin:0}
+.play-scene{position:absolute;right:0;bottom:0;width:260px;height:174px;margin:0}
 .play-scene>img{display:block;width:100%;height:100%;object-fit:contain;object-position:right bottom}
 .character-target{position:absolute;top:5%;bottom:9%;width:43%;padding:0;background:transparent;border-radius:35%;cursor:pointer;color:#735029}
 .target-areum{left:4%}.target-melody{right:4%}
@@ -163,10 +163,10 @@ body[data-view=board] .intro .gift-hint{position:absolute;bottom:0;right:0;margi
 #giftDialog h2{text-align:center}#giftBalance{font-size:14px;text-align:center}
 .gift-options{border:0;padding:0;margin:20px 0}.gift-options legend{font-size:14px;color:#7b628e;margin-bottom:10px}#giftOptions{display:flex;gap:10px}.gift-option{flex:1;position:relative;margin:0!important}.gift-option input{position:absolute;opacity:0;width:1px;height:1px}.gift-option>span{display:flex;flex-direction:column;align-items:center;border:2px solid #e8ddef;border-radius:15px;padding:14px 8px;background:#fcf9ff;gap:8px}.gift-option input:checked+span{border-color:#9864ca;background:#f2e8ff}.gift-option input:focus-visible+span{outline:3px solid #9562c5;outline-offset:3px}.gift-option input:disabled+span{opacity:.35}.gift-option .star-body{fill:#ffda75;stroke:#efbf56}.gift-option .star-face{opacity:1}#giftError{color:#a35362;font-size:13px;min-height:20px}#giftDialog .primary{margin-top:0}body:has(#giftDialog[open]){overflow:hidden}
 @media(max-width:650px){
- body[data-view=board] .intro{height:310px;min-height:0;padding:14px 0 0;text-align:left}
+ body[data-view=board] .intro{height:278px;min-height:0;padding:14px 0 0;text-align:left}
  body[data-view=board] .intro h1{font-size:22px;line-height:1.45;max-width:100%;margin:0 0 8px}
  body[data-view=board] .intro>p:not(.gift-hint){font-size:12px}
- .play-scene{width:216px;height:144px;right:0;bottom:32px;margin:0}
+ .play-scene{width:216px;height:144px;right:0;bottom:0;margin:0}
  body[data-view=board] .intro .gift-hint{font-size:12px;margin:0}
  .gift-portraits img{width:65px;height:90px}
 }
@@ -196,3 +196,6 @@ body[data-view=history] .history-section{margin-top:12px}
 .admin-login .primary{width:100%;background:#8548d6}
 .admin-login a{display:block;text-align:center;font-size:14px;color:#795a90;margin-top:22px}
 .admin-logout{display:block;margin:16px 0 0 auto;padding:10px 16px;border-radius:12px;background:#fff;color:#7041b0;font-size:14px}
+
+/* Bring the board up to the tabletop illustration after removing its labels. */
+body[data-role=child][data-view=board] .wallet{margin-top:0}
