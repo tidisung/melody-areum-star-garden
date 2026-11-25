@@ -5,7 +5,7 @@
  let loading = false;
  function startApp() {
   const script = document.createElement('script');
-  script.src = 'app.js?v=shop-menu-1';
+  script.src = 'app.js?v=matching-ui-1';
   script.onload = () => {
    document.documentElement.classList.remove('admin-locked');
    document.getElementById('adminLogout').onclick = () => location.reload();
