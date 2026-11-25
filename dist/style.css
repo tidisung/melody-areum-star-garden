@@ -272,3 +272,5 @@ body[data-view=shop] .reward-intro p,#rouletteDialog .reward-intro p{font-size:1
  #rouletteDialog .wish-card-art{min-height:135px;font-size:75px}
  #rouletteDialog .wish-card-description{font-size:14px;min-height:155px;padding:0 18px 24px}
 }
+#rouletteDialog .chance-for-kids{font-size:14px;line-height:1.7;margin:10px 0 0;color:#fff;font-weight:400}
+#rouletteDialog .odds-note{font-size:14px;line-height:1.85;word-break:keep-all}
