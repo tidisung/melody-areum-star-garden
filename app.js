@@ -63,7 +63,7 @@ function goldenTicket(){return `<img class="golden-ticket-icon" src="assets/gold
 
 function renderGiftScene(){
  document.querySelectorAll('[data-gift-to]').forEach(button=>{const target=+button.dataset.giftTo;button.disabled=isAdmin||target===active;button.querySelector('span').textContent=state.children[target].name+(target===active&&!isAdmin?' · 나':'');});
- $('#giftHint').textContent=isAdmin?'아이들 페이지에서 서로 별을 선물할 수 있어요.':state.children[1-active].name+'를 눌러 별을 선물해 봐!';
+ 
 }
 let giftTo=null,giftBusy=false;
 document.querySelectorAll('[data-gift-to]').forEach(button=>button.onclick=()=>{
