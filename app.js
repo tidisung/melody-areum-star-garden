@@ -8,7 +8,7 @@ const defaults=()=>({children:[{name:'멜로디',stars:0,tickets:0},{name:'아�
 let state;try{state=JSON.parse(localStorage.getItem(KEY))||defaults();if(!Array.isArray(state.children)||!Array.isArray(state.rewards))throw Error()}catch{state=defaults()}let active=page==='areum'?1:0;const $=s=>document.querySelector(s),child=()=>state.children[active],esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function save(){try{localStorage.setItem(KEY,JSON.stringify(state));return true}catch{toast('저장 공간을 확인해 주세요. 기록을 저장하지 못했어요.');return false}}
 function record(icon,text,amount){state.history.unshift({child:active,icon,text,amount,date:Date.now()});state.history=state.history.slice(0,200)}
-function render(){syncCatalog();const c=child();renderGiftScene();renderDailyStars();document.title=isAdmin?'관리자 · 반짝정원':c.name+'의 반짝정원';if(isAdmin)renderAdmin();$('#childName').textContent=c.name;$('#greetingName').textContent=c.name;$('#shopName').textContent=c.name;$('#shopTickets').textContent=c.tickets;$('#stars').textContent=c.stars;$('#tickets').textContent=c.tickets;document.querySelectorAll('[data-child]').forEach(b=>{b.classList.toggle('selected',+b.dataset.child===active);b.setAttribute('aria-pressed',+b.dataset.child===active)});$('#starTrack').innerHTML=Array.from({length:state.threshold},(_,i)=>`<span class="${i<c.stars?'filled':''}" aria-label="${i+1}번째 별 ${i<c.stars?'완료':'빈칸'}">${cuteStar()}<small>${i<c.stars?'참 잘했어':i+1}</small></span>`).join('');$('#progressText').textContent=c.stars>=state.threshold?'골든티켓을 만들 준비가 됐어요!':`별 ${state.threshold-c.stars}개 더 모으면 골든티켓 1장!`;$('#progressCount').textContent=`${c.stars} / ${state.threshold}`;$('#convert').disabled=c.stars<state.threshold;$('#rewardCards').innerHTML=state.rewards.map((r,i)=>`<article class="reward"><div class="reward-heading"><span class="reward-number">${i+1}</span><span class="reward-kind">${esc(r.category||'선물')}</span><h3>${esc(r.name)}</h3></div><button type="button" class="reward-art photo-preview" data-preview="${i}" aria-label="${esc(r.name)} 확대" aria-haspopup="dialog" style="--bg:${r.bg}">${r.image?`<img src="${esc(r.image)}" alt="${esc(r.name)} 상품 사진" loading="lazy">`:r.emoji}<span class="zoom-badge" aria-hidden="true">⊕</span><span class="zoom-hint" aria-hidden="true">크게 보기</span></button><p>${esc(r.note)}</p><div class="reward-price"><img class="golden-ticket-icon" src="assets/golden-ticket.svg" alt="" aria-hidden="true"> × ${r.cost}</div><button data-reward="${i}">이 선물 고르기</button></article>`).join('');$('#dots').innerHTML=state.rewards.map((r,i)=>`<button class="${i===0?'active':''}" aria-label="${esc(r.name)} 보기" data-slide="${i}"></button>`).join('');const list=state.history.filter(h=>h.child===active).slice(0,15);$('#history').innerHTML=list.length?list.map(h=>`<div class="entry"><div class="entry-icon">${h.icon==='🎟️'||h.icon==='🎟'?goldenTicket():esc(h.icon)}</div><div class="entry-body">${esc(h.text)}<small>${new Date(h.date).toLocaleDateString('ko-KR',{month:'long',day:'numeric'})}</small></div><b>${esc(h.amount)}</b></div>`).join(''):'<div class="empty">아직 정원에 별이 없어요 ✧<br><br>첫 번째 반짝이는 순간을 선물해 주세요.</div>'}
+function render(){window.renderWishCards?.();syncCatalog();const c=child();renderGiftScene();renderDailyStars();document.title=isAdmin?'관리자 · 반짝정원':c.name+'의 반짝정원';if(isAdmin)renderAdmin();$('#childName').textContent=c.name;$('#greetingName').textContent=c.name;$('#shopName').textContent=c.name;$('#shopTickets').textContent=c.tickets;$('#stars').textContent=c.stars;$('#tickets').textContent=c.tickets;document.querySelectorAll('[data-child]').forEach(b=>{b.classList.toggle('selected',+b.dataset.child===active);b.setAttribute('aria-pressed',+b.dataset.child===active)});$('#starTrack').innerHTML=Array.from({length:state.threshold},(_,i)=>`<span class="${i<c.stars?'filled':''}" aria-label="${i+1}번째 별 ${i<c.stars?'완료':'빈칸'}">${cuteStar()}<small>${i<c.stars?'참 잘했어':i+1}</small></span>`).join('');$('#progressText').textContent=c.stars>=state.threshold?'골든티켓을 만들 준비가 됐어요!':`별 ${state.threshold-c.stars}개 더 모으면 골든티켓 1장!`;$('#progressCount').textContent=`${c.stars} / ${state.threshold}`;$('#convert').disabled=c.stars<state.threshold;$('#rewardCards').innerHTML=state.rewards.map((r,i)=>`<article class="reward"><div class="reward-heading"><span class="reward-number">${i+1}</span><span class="reward-kind">${esc(r.category||'선물')}</span><h3>${esc(r.name)}</h3></div><button type="button" class="reward-art photo-preview" data-preview="${i}" aria-label="${esc(r.name)} 확대" aria-haspopup="dialog" style="--bg:${r.bg}">${r.image?`<img src="${esc(r.image)}" alt="${esc(r.name)} 상품 사진" loading="lazy">`:r.emoji}<span class="zoom-badge" aria-hidden="true">⊕</span><span class="zoom-hint" aria-hidden="true">크게 보기</span></button><p>${esc(r.note)}</p><div class="reward-price"><img class="golden-ticket-icon" src="assets/golden-ticket.svg" alt="" aria-hidden="true"> × ${r.cost}</div><button data-reward="${i}">이 선물 고르기</button></article>`).join('');$('#dots').innerHTML=state.rewards.map((r,i)=>`<button class="${i===0?'active':''}" aria-label="${esc(r.name)} 보기" data-slide="${i}"></button>`).join('');const list=state.history.filter(h=>h.child===active).slice(0,15);$('#history').innerHTML=list.length?list.map(h=>`<div class="entry"><div class="entry-icon">${h.icon==='🎟️'||h.icon==='🎟'?goldenTicket():esc(h.icon)}</div><div class="entry-body">${esc(h.text)}<small>${new Date(h.date).toLocaleDateString('ko-KR',{month:'long',day:'numeric'})}</small></div><b>${esc(h.amount)}</b></div>`).join(''):'<div class="empty">아직 정원에 별이 없어요 ✧<br><br>첫 번째 반짝이는 순간을 선물해 주세요.</div>'}
 function toast(t){$('#toast').textContent=t;$('#toast').classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>$('#toast').classList.remove('show'),3000)}
 function celebrate(){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;for(let i=0;i<22;i++){let el=document.createElement('span');el.className='confetti-piece';el.textContent=['⭐','✦','🌸'][i%3];el.style.left=Math.random()*100+'%';el.style.animationDelay=Math.random()*.4+'s';$('#confetti').append(el);setTimeout(()=>el.remove(),2400)}}
 function modal(html,fn){$('#modalBody').innerHTML=html;$('#modalForm').onsubmit=e=>{if(e.submitter?.value==='cancel')return;e.preventDefault();if(fn()!==false)$('#modal').close()};$('#modal').showModal()}
@@ -114,3 +114,56 @@ let renderedShopSlot=shopSlot();
 setInterval(refreshShop,30000);
 window.addEventListener('focus',refreshShop);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshShop()});
+
+let rouletteBusy=false,wheelRotation=0;
+function wishCardHTML(card){const p=WISH_PRIZES[card.rank-1];return `<article class="saved-wish rank-${p.rank}"><span class="wish-rank">${p.rank}등 · ${p.chance}%</span><h3>${p.icon} ${p.name}</h3><p>${esc(p.text)}</p>${p.rank===1?`<form data-wish-form="${esc(card.id)}"><label>나를 위한 소원<textarea name="wish" maxlength="500" rows="3" placeholder="내가 이루고 싶은 소원을 적어봐!" required>${esc(card.wish||'')}</textarea></label><button class="secondary" type="submit">소원 저장하기</button><span class="wish-save-status" role="status"></span></form>`:''}<small>${new Date(card.date).toLocaleDateString('ko-KR')} · ${esc(state.children[card.child].name)}</small></article>`}
+window.renderWishCards=()=>{
+ $('#wishCollection').innerHTML=(state.wishCards||[]).filter(c=>c.child===active).map(wishCardHTML).join('');
+ $('#rouletteTickets').textContent=child().tickets;
+};
+window.renderWishCards();
+$('#wishPrizeList').innerHTML=WISH_PRIZES.map(p=>`<article class="wish-prize-row"><span class="wish-number">${p.rank}</span><span class="wish-icon" aria-hidden="true">${p.icon}</span><div><h3>${p.name}</h3><p>${p.text}</p><strong>당첨 확률 ${p.chance}%</strong></div></article>`).join('');
+let angle=0;$('#wishWheel').innerHTML=WISH_PRIZES.map(p=>{const center=angle+p.chance*3.6/2;angle+=p.chance*3.6;return `<span style="transform:translate(-50%,-50%) rotate(${center}deg) translateY(-105px) rotate(-${center}deg)">${p.rank}</span>`}).join('');
+$('#openRoulette').onclick=()=>{
+ $('#wishResult').innerHTML='';$('#rouletteStatus').textContent='';
+ $('#rouletteTickets').textContent=child().tickets;
+ $('#spinRoulette').disabled=isAdmin||child().tickets<5;
+ if(isAdmin)$('#rouletteStatus').textContent='아이 페이지에서 참여할 수 있어요.';
+ else if(child().tickets<5)$('#rouletteStatus').textContent='참가하려면 골든티켓 5장이 필요해요.';
+ $('#rouletteDialog').showModal();
+};
+$('#closeRoulette').onclick=()=>{if(!rouletteBusy)$('#rouletteDialog').close()};
+$('#rouletteDialog').addEventListener('cancel',e=>{if(rouletteBusy)e.preventDefault()});
+async function withWishLock(action){if(navigator.locks)return navigator.locks.request('star-garden-state',action);return action()}
+function latestWishState(){const raw=localStorage.getItem(KEY);return raw?JSON.parse(raw):JSON.parse(JSON.stringify(state))}
+$('#spinRoulette').onclick=async()=>{
+ if(rouletteBusy||isAdmin)return;
+ rouletteBusy=true;$('#spinRoulette').disabled=true;$('#closeRoulette').disabled=true;$('#wishResult').innerHTML='';
+ const owner=active;
+ try{
+  const card=await withWishLock(()=>{
+   const next=latestWishState();const card=applyWishDraw(next,owner,drawWishNumber(),crypto.randomUUID(),Date.now());
+   // Persist the debit, refund and card together before animation, so refresh cannot lose a prize.
+   localStorage.setItem(KEY,JSON.stringify(next));state=next;return card;
+  });
+  render();$('#rouletteStatus').textContent='두근두근! 소원카드를 만나러 가요…';
+  const p=WISH_PRIZES[card.rank-1],start=WISH_PRIZES.slice(0,card.rank-1).reduce((v,x)=>v+x.chance*3.6,0),center=start+p.chance*3.6/2;
+  const target=(360-center)%360;wheelRotation+=1800+((target-wheelRotation%360+360)%360);
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  $('#wishWheel').style.transition=reduced?'none':'transform 3.6s cubic-bezier(.16,.75,.2,1)';
+  $('#wishWheel').style.transform=`rotate(${wheelRotation}deg)`;
+  if(!reduced)await new Promise(resolve=>setTimeout(resolve,3700));
+  $('#rouletteStatus').textContent=card.rank===5?'골든티켓 3장을 돌려드렸어요!':card.rank+'등 당첨! 소원카드를 받았어요!';
+  $('#wishResult').innerHTML=wishCardHTML(card);$('#wishResult').scrollIntoView({behavior:'smooth',block:'nearest'});
+  if(card.rank<5)celebrate();
+ }catch(error){$('#rouletteStatus').textContent=error.message==='골든티켓 5장이 필요해요.'?error.message:'저장하지 못했어요. 티켓과 기록을 확인한 뒤 다시 시도해 주세요.';}
+ finally{rouletteBusy=false;$('#closeRoulette').disabled=false;$('#spinRoulette').disabled=child().tickets<5;}
+};
+document.addEventListener('submit',async event=>{
+ const form=event.target.closest('[data-wish-form]');if(!form)return;event.preventDefault();
+ const wish=form.elements.wish.value.trim();if(!wish){form.elements.wish.focus();return}
+ const button=form.querySelector('button');button.disabled=true;
+ try{await withWishLock(()=>{const next=latestWishState(),card=(next.wishCards||[]).find(c=>c.id===form.dataset.wishForm&&c.child===active&&c.rank===1);if(!card)throw Error('Missing card');card.wish=wish;localStorage.setItem(KEY,JSON.stringify(next));state=next;});form.querySelector('.wish-save-status').textContent='소원을 저장했어요!';if(form.closest('#wishResult'))window.renderWishCards();}
+ catch{form.querySelector('.wish-save-status').textContent='저장하지 못했어요. 다시 시도해 주세요.';}
+ finally{button.disabled=false;}
+});
