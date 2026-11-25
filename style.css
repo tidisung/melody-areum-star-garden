@@ -180,3 +180,19 @@ body[data-view=board] .intro .gift-hint{position:absolute;bottom:0;right:0;margi
 /* The third tab starts directly with the activity log. */
 body[data-view=history] .intro{display:none}
 body[data-view=history] .history-section{margin-top:12px}
+
+/* Password entry is rendered before the admin application loads. */
+.admin-login{display:none}
+.admin-locked body{background:#ffce19}
+.admin-locked .app{display:none!important}
+.admin-locked .admin-login{display:grid;min-height:100svh;place-items:center;padding:24px}
+.admin-login form{width:min(100%,360px);padding:30px 24px;background:#fff;border-radius:26px;box-shadow:0 8px 24px #76521518}
+.login-lock{text-align:center;font-size:40px}
+.admin-login h1{font-size:24px;text-align:center;color:#7041b0;margin:18px 0 10px;letter-spacing:-1px}
+.admin-login p{font-size:14px;line-height:1.6;color:#7b6a89;text-align:center}
+.admin-login label{display:block;font-size:14px;margin:24px 0 8px}
+.admin-login input{width:100%;padding:15px;border:2px solid #e4d5f3;border-radius:12px;font-size:24px;text-align:center;letter-spacing:12px;box-sizing:border-box}
+.admin-login #loginError{min-height:23px;color:#b34961}
+.admin-login .primary{width:100%;background:#8548d6}
+.admin-login a{display:block;text-align:center;font-size:14px;color:#795a90;margin-top:22px}
+.admin-logout{display:block;margin:16px 0 0 auto;padding:10px 16px;border-radius:12px;background:#fff;color:#7041b0;font-size:14px}
