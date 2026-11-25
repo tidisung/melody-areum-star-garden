@@ -2,7 +2,7 @@ const pageParam=new URLSearchParams(location.search).get('page');
 const page=['melody','areum','admin'].includes(pageParam)?pageParam:'melody';
 const isAdmin=page==='admin';
 document.body.dataset.role=isAdmin?'admin':'child';
-const DESSERTS=[{"name": "혜자로운 소보로땅콩크림빵", "note": "고소한 땅콩크림이 가득!", "emoji": "🥜", "cost": 1, "bg": "#fff", "image": "assets/peanut.png"}, {"name": "혜자로운 단팥크림빵", "note": "단팥과 크림의 달콤한 만남", "emoji": "🍞", "cost": 1, "bg": "#fff", "image": "assets/redbean.png"}, {"name": "서울우유 우유크림빵", "note": "부드러운 우유크림 한가득", "emoji": "🥛", "cost": 1, "bg": "#fff", "image": "assets/milk-bread.png"}, {"name": "서울우유 우유크림모찌롤", "note": "폭신하고 쫀득한 크림 롤", "emoji": "🍰", "cost": 2, "bg": "#fff", "image": "assets/milk-roll.png"}, {"name": "한정선 요거트 찹쌀떡", "note": "쫀득한 찹쌀떡 속 요거트 크림", "emoji": "🍡", "cost": 2, "bg": "#fff", "image": "assets/yogurt.png"}];
+const DESSERTS=VERIFIED_REWARDS.slice(0,5);
 const KEY='star-garden-v1';
 const defaults=()=>({children:[{name:'멜로디',stars:0,tickets:0},{name:'아름이',stars:0,tickets:0}],threshold:10,rewards:DESSERTS.map(r=>({...r})),history:[]});
 let state;try{state=JSON.parse(localStorage.getItem(KEY))||defaults();if(!Array.isArray(state.children)||!Array.isArray(state.rewards))throw Error()}catch{state=defaults()}let active=page==='areum'?1:0;const $=s=>document.querySelector(s),child=()=>state.children[active],esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -95,9 +95,9 @@ $('#giftDialog').addEventListener('cancel',event=>{if(giftBusy)event.preventDefa
 
 function syncCatalog(){
  const slot=shopSlot();
- if(state.catalogVersion===4&&state.catalogSlot===slot)return false;
+ if(state.catalogVersion===5&&state.catalogSlot===slot)return false;
  state.rewards=catalogForSlot(slot,DESSERTS);
- state.catalogSlot=slot;state.catalogVersion=4;
+ state.catalogSlot=slot;state.catalogVersion=5;
  try{localStorage.setItem(KEY,JSON.stringify(state))}catch{}
  return true;
 }
